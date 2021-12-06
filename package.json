@@ -1,0 +1,19 @@
+{
+  "name": "remark-automatic-glossary-markup",
+  "version": "1.0.5",
+  "description": "A minimal example of a remark plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest"
+  },
+  "author": "Ken Corbett",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "mdast-util-find-and-replace": "^2.1.0",
+    "unist-builder": "^3.0.0"
+  },
+  "devDependencies": {
+    "remark": "^14.0.2"
+  }
+}
