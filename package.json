@@ -1,7 +1,8 @@
 {
   "name": "remark-automatic-glossary-markup",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A minimal example of a remark plugin",
+  "repository": "https://github.com/KenCorbettJr/remark-automatic-glossary-markup",
   "main": "index.js",
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest"

@@ -1,6 +1,5 @@
-# Remark Plugin starter code
+# Remark Automatic Glossary Markup 
 
-This repository contains a minimal example of a remark plugin.
-The tests are done with Jest.
+[remark-automatic-glossary-markup](https://www.npmjs.com/package/remark-automatic-glossary-markup)
 
-If you would like to get more info about Unified, Remark and how to create a plugin, you can visit [my blog](https://braincoke.fr).
+This is a very simple and straightforward remark plugin that, when given a list of glossary terms, will wrap the first occurance of that term within a paragraph of the markdown file within a link.  That link will be to `#glossary-${urlEncodedGlossaryTerm}` which you can then use to drive your glossary behavior.
