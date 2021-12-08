@@ -1,6 +1,6 @@
 {
   "name": "remark-automatic-glossary-markup",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A minimal example of a remark plugin",
   "repository": "https://github.com/KenCorbettJr/remark-automatic-glossary-markup",
   "main": "index.js",
@@ -15,6 +15,6 @@
     "unist-builder": "^3.0.0"
   },
   "devDependencies": {
-    "remark": "^14.0.2"
+    "remark": "^12.0.1"
   }
 }

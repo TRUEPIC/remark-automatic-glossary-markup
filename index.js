@@ -1,8 +1,7 @@
-import { visit } from "unist-util-visit";
 import { u } from "unist-builder";
 import { findAndReplace } from "mdast-util-find-and-replace";
 
-export default function remarkAutomaticGlossaryMarkup(terms) {
+export default function remarkAutomaticGlossaryMarkup({ terms, withinNodeTypes = ["paragraph", "root", "list", "listItem"] }) {
   return (tree) => {
     terms.forEach((glossaryTerm) => {
       const caseInsensitiveRegex = new RegExp(
@@ -24,7 +23,7 @@ export default function remarkAutomaticGlossaryMarkup(terms) {
           }
         },
         {
-          ignore: (node) => node.type !== "paragraph" && node.type !== "root",
+          ignore: (node) => !withinNodeTypes.includes(node.type) ,
         }
       );
     });
