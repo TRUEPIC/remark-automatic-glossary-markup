@@ -1,5 +1,5 @@
 import remark from "remark";
-import plugin from "..";
+import plugin from ".";
 
 const terms = [{ term: "Lens SDK" }, { term: "JSON" }]; 
 

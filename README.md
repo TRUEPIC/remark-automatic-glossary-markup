@@ -14,3 +14,15 @@ remark().use(remarkAutomaticGlossaryMarkup, {
   terms: [{ term: "API" }, { term: "JSON" }],
 });
 ```
+
+## Testing
+
+To run the tests just run:
+
+```shell
+npm run test
+```
+
+## Releasing
+
+(TBD)
