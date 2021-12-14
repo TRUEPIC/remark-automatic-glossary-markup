@@ -1,5 +1,5 @@
 {
-  "name": "remark-automatic-glossary-markup",
+  "name": "@truepic/remark-automatic-glossary-markup",
   "version": "1.0.7",
   "description": "A minimal example of a remark plugin",
   "repository": "https://github.com/KenCorbettJr/remark-automatic-glossary-markup",
@@ -15,6 +15,7 @@
     "unist-builder": "^3.0.0"
   },
   "devDependencies": {
+    "jest": "^27.4.5",
     "remark": "^12.0.1"
   }
 }
