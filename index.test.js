@@ -1,4 +1,4 @@
-import remark from 'remark'
+import { remark } from 'remark'
 import plugin from '.'
 
 const terms = [{ term: 'Lens SDK' }, { term: 'JSON' }]
@@ -9,15 +9,16 @@ describe('remark-automatic-glossary-markup', () => {
     const processor = remark().use(plugin, { terms })
 
     const resultString = processor.processSync('The Lens SDK is an easy to use SDK\n')
-    expect(resultString.contents).toEqual('The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n')
+    expect(resultString.value).toEqual('The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n')
   })
 
-  test('Wraps a glossary term in a link located in a list item', () => {
+  test('Wraps a glossary term in a link located in a list item', async () => {
     // Create our processor with our plugin
     const processor = remark().use(plugin, { terms })
+    processor.processSync()
 
-    const resultString = processor.processSync('- The Lens SDK is an easy to use SDK\n')
-    expect(resultString.contents).toEqual('-   The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n')
+    const resultString = await processor.process('- The Lens SDK is an easy to use SDK\n')
+    expect(resultString.value).toEqual('*   The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n')
   })
 
   test('Wraps a glossary term in a link located in a numbered list item', () => {
@@ -25,7 +26,7 @@ describe('remark-automatic-glossary-markup', () => {
     const processor = remark().use(plugin, { terms })
 
     const resultString = processor.processSync('1. The Lens SDK is an easy to use SDK\n')
-    expect(resultString.contents).toEqual('1.  The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n')
+    expect(resultString.value).toEqual('1.  The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n')
   })
 
   test('Wraps a multiple terms located in the same paragraph', () => {
@@ -33,7 +34,7 @@ describe('remark-automatic-glossary-markup', () => {
     const processor = remark().use(plugin, { terms })
 
     const resultString = processor.processSync('The Lens SDK is an easy to use SDK and uses JSON\n')
-    expect(resultString.contents).toEqual(
+    expect(resultString.value).toEqual(
       'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK and uses [JSON](#glossary-JSON)\n'
     )
   })
@@ -45,7 +46,7 @@ describe('remark-automatic-glossary-markup', () => {
     const resultString = processor.processSync(
       'The Lens SDK is an easy to use SDK.  It is the only Lens SDK you will ever need.\n'
     )
-    expect(resultString.contents).toEqual(
+    expect(resultString.value).toEqual(
       'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK.  It is the only Lens SDK you will ever need.\n'
     )
   })
@@ -57,7 +58,7 @@ describe('remark-automatic-glossary-markup', () => {
     const resultString = processor.processSync(
       'The Lens SDK is an easy to use SDK.\nIt is the only Lens SDK you will ever need.\n'
     )
-    expect(resultString.contents).toEqual(
+    expect(resultString.value).toEqual(
       'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK.\nIt is the only Lens SDK you will ever need.\n'
     )
   })
@@ -66,8 +67,8 @@ describe('remark-automatic-glossary-markup', () => {
     // Create our processor with our plugin
     const processor = remark().use(plugin, { terms })
 
-    const resultString = processor.processSync('The \\[Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n')
-    expect(resultString.contents).toEqual('The \\[Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n')
+    const resultString = processor.processSync('The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n')
+    expect(resultString.value).toEqual('The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n')
   })
 
   test('Will not wrap a term that is in a header', () => {
@@ -77,7 +78,7 @@ describe('remark-automatic-glossary-markup', () => {
     const markdownHeader = '# The Lens SDK\n'
 
     const resultString = processor.processSync(markdownHeader)
-    expect(resultString.contents).toEqual(markdownHeader)
+    expect(resultString.value).toEqual(markdownHeader)
   })
 
   test('Will not wrap a term that is code', () => {
@@ -87,7 +88,7 @@ describe('remark-automatic-glossary-markup', () => {
     const markdownWithCode = "Don't wrap a term in a code block `JSON The Lens SDK`\n"
 
     const resultString = processor.processSync(markdownWithCode)
-    expect(resultString.contents).toEqual(markdownWithCode)
+    expect(resultString.value).toEqual(markdownWithCode)
   })
 
   test("Don't add a reference to link", () => {
@@ -97,7 +98,7 @@ describe('remark-automatic-glossary-markup', () => {
     const markdownWithCode = '[JSON Website](https://www.json.org/)\n'
 
     const resultString = processor.processSync(markdownWithCode)
-    expect(resultString.contents).toEqual(markdownWithCode)
+    expect(resultString.value).toEqual(markdownWithCode)
   })
 
   test("Don't wrap just part of a word", () => {
@@ -107,6 +108,6 @@ describe('remark-automatic-glossary-markup', () => {
     const markdownWithCode = 'You can use this JSONIZER to do this work\n'
 
     const resultString = processor.processSync(markdownWithCode)
-    expect(resultString.contents).toEqual(markdownWithCode)
+    expect(resultString.value).toEqual(markdownWithCode)
   })
 })
