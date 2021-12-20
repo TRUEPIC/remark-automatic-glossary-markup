@@ -57,8 +57,10 @@ remark().use(remarkAutomaticGlossaryMarkup, {
 })
 ```
 
-When the links are added to your markdown, the term will be URL encoded and appended to `#glossary-`. So if you had a
-term like `Big Fish` the link that would be created would be `#glossary-Big%20Fish`.
+NOTE: When the links are added to your markdown, the term will be URL encoded and appended to `#glossary-`. So if you
+had a term like `Big Fish` the link that would be created would be `#glossary-Big%20Fish`. You should trim the
+`#glossary-` off the front of the link and use `decodeURIComponent()` on the remaining part of the link to get at the
+original term.
 
 ## Development
 
