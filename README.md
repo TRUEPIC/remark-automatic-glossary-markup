@@ -39,9 +39,7 @@ added to the first occurrence of the word in a paragraph or list item within a s
 You can then listen for clicks on links that have a URL that starts with `#glossary-` and show your user the glossary
 term with a tooltip or a popup when they click the link.
 
-# Usage
-
-## Installation
+## Usage
 
 ```shell
 $ npm install @truepic/remark-automatic-glossary-markup
@@ -64,6 +62,16 @@ term like `Big Fish` the link that would be created would be `#glossary-Big%20Fi
 
 ## Development
 
+The only prerequisite is a compatible version of Node.js (see `engines.node` in `package.json`).
+
+### Dependencies
+
+Install dependencies with npm:
+
+```shell
+$ npm install
+```
+
 ### Testing
 
 To run the tests just run:
@@ -84,7 +92,7 @@ on save.
 
 To run via the command line:
 
-```bash
+```shell
 $ npm run lint
 ```
 
@@ -95,7 +103,7 @@ This is run automatically by CircleCI as part of the build process.
 [Release It!](https://github.com/release-it/release-it) is used to automate the tagging and pushing of releases. When
 the `development` branch is ready, start the process via the command line:
 
-```bash
+```shell
 $ npm run release
 ```
 

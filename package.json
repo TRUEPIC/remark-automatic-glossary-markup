@@ -1,17 +1,18 @@
 {
   "name": "@truepic/remark-automatic-glossary-markup",
   "version": "1.0.8",
-  "description": "A minimal example of a remark plugin",
-  "repository": "https://github.com/KenCorbettJr/remark-automatic-glossary-markup",
+  "description": "A plugin to automatically add markup to glossary terms in markdown.",
+  "repository": "TRUEPIC/remark-automatic-glossary-markup",
+  "homepage": "https://github.com/TRUEPIC/remark-automatic-glossary-markup#readme",
+  "bugs": "https://github.com/TRUEPIC/remark-automatic-glossary-markup/issues",
   "main": "index.js",
+  "license": "MIT",
+  "type": "module",
   "scripts": {
     "lint": "eslint",
     "release": "release-it",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
-  "author": "Ken Corbett",
-  "license": "MIT",
-  "type": "module",
   "dependencies": {
     "mdast-util-find-and-replace": "^2.1.0",
     "unist-builder": "^3.0.0"
@@ -21,5 +22,11 @@
     "jest": "^27.4.5",
     "release-it": "^14.11.8",
     "remark": "^12.0.1"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
