@@ -25,4 +25,8 @@ npm run test
 
 ## Releasing
 
-(TBD)
+To run the tests just run:
+
+```shell
+npm run release
+```
