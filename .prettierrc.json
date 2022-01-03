@@ -1,6 +1,5 @@
 {
   "proseWrap": "always",
   "semi": false,
-  "singleQuote": true,
-  "printWidth": 120
+  "singleQuote": true
 }

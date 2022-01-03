@@ -7,7 +7,10 @@ export default function remarkAutomaticGlossaryMarkup({
 }) {
   return (tree) => {
     terms.forEach((glossaryTerm) => {
-      const caseInsensitiveRegex = new RegExp(`\\b${glossaryTerm.term}(?!\\])\\b`, 'i')
+      const caseInsensitiveRegex = new RegExp(
+        `\\b${glossaryTerm.term}(?!\\])\\b`,
+        'i'
+      )
       let foundOnce = false
       findAndReplace(
         tree,
@@ -15,7 +18,9 @@ export default function remarkAutomaticGlossaryMarkup({
         function ($0) {
           if (!foundOnce) {
             foundOnce = true
-            return u('link', { url: `#glossary-${encodeURIComponent($0)}` }, [u('text', $0)])
+            return u('link', { url: `#glossary-${encodeURIComponent($0)}` }, [
+              u('text', $0),
+            ])
           } else {
             return u('text', $0)
           }

@@ -8,8 +8,12 @@ describe('remark-automatic-glossary-markup', () => {
     // Create our processor with our plugin
     const processor = remark().use(plugin, { terms })
 
-    const resultString = processor.processSync('The Lens SDK is an easy to use SDK\n')
-    expect(resultString.value).toBe('The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n')
+    const resultString = processor.processSync(
+      'The Lens SDK is an easy to use SDK\n'
+    )
+    expect(resultString.value).toBe(
+      'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n'
+    )
   })
 
   test('Wraps a glossary term in a link located in a list item', async () => {
@@ -17,23 +21,33 @@ describe('remark-automatic-glossary-markup', () => {
     const processor = remark().use(plugin, { terms })
     processor.processSync()
 
-    const resultString = await processor.process('- The Lens SDK is an easy to use SDK\n')
-    expect(resultString.value).toBe('*   The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n')
+    const resultString = await processor.process(
+      '- The Lens SDK is an easy to use SDK\n'
+    )
+    expect(resultString.value).toBe(
+      '*   The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n'
+    )
   })
 
   test('Wraps a glossary term in a link located in a numbered list item', () => {
     // Create our processor with our plugin
     const processor = remark().use(plugin, { terms })
 
-    const resultString = processor.processSync('1. The Lens SDK is an easy to use SDK\n')
-    expect(resultString.value).toBe('1.  The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n')
+    const resultString = processor.processSync(
+      '1. The Lens SDK is an easy to use SDK\n'
+    )
+    expect(resultString.value).toBe(
+      '1.  The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n'
+    )
   })
 
   test('Wraps a multiple terms located in the same paragraph', () => {
     // Create our processor with our plugin
     const processor = remark().use(plugin, { terms })
 
-    const resultString = processor.processSync('The Lens SDK is an easy to use SDK and uses JSON\n')
+    const resultString = processor.processSync(
+      'The Lens SDK is an easy to use SDK and uses JSON\n'
+    )
     expect(resultString.value).toBe(
       'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK and uses [JSON](#glossary-JSON)\n'
     )
@@ -67,8 +81,12 @@ describe('remark-automatic-glossary-markup', () => {
     // Create our processor with our plugin
     const processor = remark().use(plugin, { terms })
 
-    const resultString = processor.processSync('The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n')
-    expect(resultString.value).toBe('The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n')
+    const resultString = processor.processSync(
+      'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n'
+    )
+    expect(resultString.value).toBe(
+      'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n'
+    )
   })
 
   test('Will not wrap a term that is in a header', () => {
@@ -85,7 +103,8 @@ describe('remark-automatic-glossary-markup', () => {
     // Create our processor with our plugin
     const processor = remark().use(plugin, { terms })
 
-    const markdownWithCode = "Don't wrap a term in a code block `JSON The Lens SDK`\n"
+    const markdownWithCode =
+      "Don't wrap a term in a code block `JSON The Lens SDK`\n"
 
     const resultString = processor.processSync(markdownWithCode)
     expect(resultString.value).toBe(markdownWithCode)

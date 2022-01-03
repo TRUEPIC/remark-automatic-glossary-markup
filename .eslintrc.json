@@ -15,13 +15,5 @@
   ],
   "parserOptions": {
     "ecmaVersion": 2018
-  },
-  "rules": {
-    "node/no-unpublished-require": [
-      "error",
-      {
-        "allowModules": ["knex"]
-      }
-    ]
   }
 }
