@@ -14,17 +14,19 @@ export default function remarkAutomaticGlossaryMarkup({
       let foundOnce = false
       findAndReplace(
         tree,
-        caseInsensitiveRegex,
-        function ($0) {
-          if (!foundOnce) {
-            foundOnce = true
-            return u('link', { url: `#glossary-${encodeURIComponent($0)}` }, [
-              u('text', $0),
-            ])
-          } else {
-            return u('text', $0)
-          }
-        },
+        [
+          caseInsensitiveRegex,
+          function ($0) {
+            if (!foundOnce) {
+              foundOnce = true
+              return u('link', { url: `#glossary-${encodeURIComponent($0)}` }, [
+                u('text', $0),
+              ])
+            } else {
+              return u('text', $0)
+            }
+          },
+        ],
         {
           ignore: (node) => !withinNodeTypes.includes(node.type),
         }
