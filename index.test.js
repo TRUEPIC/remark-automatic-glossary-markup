@@ -9,10 +9,10 @@ describe('remark-automatic-glossary-markup', () => {
     const processor = remark().use(plugin, { terms })
 
     const resultString = processor.processSync(
-      'The Lens SDK is an easy to use SDK\n'
+      'The Lens SDK is an easy to use SDK\n',
     )
     expect(resultString.value).toBe(
-      'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n'
+      'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n',
     )
   })
 
@@ -22,10 +22,10 @@ describe('remark-automatic-glossary-markup', () => {
     processor.processSync()
 
     const resultString = await processor.process(
-      '- The Lens SDK is an easy to use SDK\n'
+      '- The Lens SDK is an easy to use SDK\n',
     )
     expect(resultString.value).toBe(
-      '*   The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n'
+      '* The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n',
     )
   })
 
@@ -34,10 +34,10 @@ describe('remark-automatic-glossary-markup', () => {
     const processor = remark().use(plugin, { terms })
 
     const resultString = processor.processSync(
-      '1. The Lens SDK is an easy to use SDK\n'
+      '1. The Lens SDK is an easy to use SDK\n',
     )
     expect(resultString.value).toBe(
-      '1.  The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n'
+      '1. The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n',
     )
   })
 
@@ -46,10 +46,10 @@ describe('remark-automatic-glossary-markup', () => {
     const processor = remark().use(plugin, { terms })
 
     const resultString = processor.processSync(
-      'The Lens SDK is an easy to use SDK and uses JSON\n'
+      'The Lens SDK is an easy to use SDK and uses JSON\n',
     )
     expect(resultString.value).toBe(
-      'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK and uses [JSON](#glossary-JSON)\n'
+      'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK and uses [JSON](#glossary-JSON)\n',
     )
   })
 
@@ -58,10 +58,10 @@ describe('remark-automatic-glossary-markup', () => {
     const processor = remark().use(plugin, { terms })
 
     const resultString = processor.processSync(
-      'The Lens SDK is an easy to use SDK.  It is the only Lens SDK you will ever need.\n'
+      'The Lens SDK is an easy to use SDK.  It is the only Lens SDK you will ever need.\n',
     )
     expect(resultString.value).toBe(
-      'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK.  It is the only Lens SDK you will ever need.\n'
+      'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK.  It is the only Lens SDK you will ever need.\n',
     )
   })
 
@@ -70,10 +70,10 @@ describe('remark-automatic-glossary-markup', () => {
     const processor = remark().use(plugin, { terms })
 
     const resultString = processor.processSync(
-      'The Lens SDK is an easy to use SDK.\nIt is the only Lens SDK you will ever need.\n'
+      'The Lens SDK is an easy to use SDK.\nIt is the only Lens SDK you will ever need.\n',
     )
     expect(resultString.value).toBe(
-      'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK.\nIt is the only Lens SDK you will ever need.\n'
+      'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK.\nIt is the only Lens SDK you will ever need.\n',
     )
   })
 
@@ -82,10 +82,10 @@ describe('remark-automatic-glossary-markup', () => {
     const processor = remark().use(plugin, { terms })
 
     const resultString = processor.processSync(
-      'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n'
+      'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n',
     )
     expect(resultString.value).toBe(
-      'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n'
+      'The [Lens SDK](#glossary-Lens%20SDK) is an easy to use SDK\n',
     )
   })
 
