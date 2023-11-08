@@ -5,5 +5,7 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - run: npm run install
       - run: npm run lint
       - run: npm run test
