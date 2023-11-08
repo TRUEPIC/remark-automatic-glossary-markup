@@ -1,0 +1,9 @@
+name: Github Actions
+run-name: Running CI for remark-automatic-glossary-markup
+on: [push]
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm run lint
+      - run: npm run test
