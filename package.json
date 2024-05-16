@@ -1,6 +1,6 @@
 {
   "name": "@truepic/remark-automatic-glossary-markup",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A plugin to automatically add markup to glossary terms in markdown.",
   "repository": "TRUEPIC/remark-automatic-glossary-markup",
   "homepage": "https://github.com/TRUEPIC/remark-automatic-glossary-markup#readme",
